@@ -1,5 +1,3 @@
--- LAZY PACKAGE MANAGER --
-require("config.lazy")
 
 -- BASIC NEOVIM CONFIGS --
 vim.cmd("set expandtab")
@@ -13,3 +11,7 @@ vim.opt.signcolumn = "number" --dont know what this do
 
 -- REMAPS --
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true }) -- remap jj to esc in insert mode
+
+
+-- LAZY PACKAGE MANAGER --
+require("config.lazy")

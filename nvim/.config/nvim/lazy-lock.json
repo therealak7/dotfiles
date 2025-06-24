@@ -1,4 +1,7 @@
 {
+  "fzf-lua": { "branch": "main", "commit": "fd6588ee052e150eb61f578fa8c40648def5b334" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "nvim-treesitter": { "branch": "main", "commit": "6c503103710e6ba95632b540f0f337c648b92f17" },
+  "nvim-web-devicons": { "branch": "master", "commit": "19d6211c78169e78bab372b585b6fb17ad974e82" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" }
 }

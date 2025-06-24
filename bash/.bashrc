@@ -11,6 +11,10 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
+### ENVIRONMENT VARIABLES ###
+export WEZ_CONF="$HOME/.config/wezterm/wezterm.lua"
+
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -33,4 +37,5 @@ mkcp() { mkdir -p `dirname $2` && cp "$1" -r "$2"; }
 
 ### ALIAS ###
 alias lsl='ls -lAgoh --color=auto --group-directories-first --time-style=locale'
-mkdir='mkdir -p'
+alias mkdir='mkdir -p'
+alias dots='cd ~/dotfiles'

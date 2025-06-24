@@ -56,7 +56,7 @@ wezterm.on('gui-startup', function(cmd)
 end)
 
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "tokyonight-storm"
 config.font =
     wezterm.font("JetBrainsMonoNL NF")
 config.font_size = 12

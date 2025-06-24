@@ -1,17 +1,22 @@
 
 -- BASIC NEOVIM CONFIGS --
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
---vim.cmd("set relativenumber")
-vim.opt.number = true --dont know what this do
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "number" --dont know what this do
+--vim.cmd("set relativenumber")  > The vimsscript way [everything inside vim.cmd is a vimscript string]
+--vim.opt.relativenumber = true  > The neovim lua way
+require("config.options")
 
 -- REMAPS --
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true }) -- remap jj to esc in insert mode
 
+-- SETTING LEADER KEY --
+-- set to space inside config.lazy-
+vim.g.mapleader = " "
+vim.g.maplocalleader = "//"
 
 -- LAZY PACKAGE MANAGER --
 require("config.lazy")
+
+-- KEYMAPS --
+require("config.keymaps")
+
+-- COLORSCHEME --
+vim.cmd.colorscheme "tokyonight-storm"

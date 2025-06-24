@@ -39,3 +39,10 @@ mkcp() { mkdir -p `dirname $2` && cp "$1" -r "$2"; }
 alias lsl='ls -lAgoh --color=auto --group-directories-first --time-style=locale'
 alias mkdir='mkdir -p'
 alias dots='cd ~/dotfiles'
+
+# If fish shell exists, it is started as the interactive shell in the terminal
+if [[ -f /usr/bin/fish && $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
+then
+	shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+	exec fish $LOGIN_OPTION
+fi

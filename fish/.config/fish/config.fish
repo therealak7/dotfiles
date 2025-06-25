@@ -12,3 +12,7 @@ starship init fish | source
 alias lsl='ls -lAgoh --color=auto --group-directories-first --time-style=locale'
 alias dots='cd ~/dotfiles'
 alias pdftk='java -jar $HOME/.local/bin/pdftk-all.jar'
+
+alias nv='nvim'
+alias nl='NVIM_APPNAME="nvim_lazy" nvim'
+alias nk='NVIM_APPNAME="nvim-kickstart" nvim'

@@ -7,12 +7,12 @@ stardrop=$(printf "\e[49m \e[38;2;34;250;148;49m▄\e[38;2;60;185;191;48;2;1;9;4
 \e[49m \e[38;2;133;32;231;48;2;54;21;132m▄\e[38;2;224;107;194;48;2;127;28;232m▄\e[38;2;148;45;223;48;2;226;115;161m▄\e[38;2;43;11;131;48;2;128;31;226m▄\e[49;38;2;37;7;130m▀\e[38;2;44;12;131;48;2;129;31;227m▄\e[38;2;143;41;225;48;2;224;111;172m▄\e[38;2;255;165;31;48;2;126;27;233m▄\e[38;2;220;104;195;48;2;53;20;132m▄\e[49m \e[m
 \e[49m \e[49;38;2;39;9;128m▀\e[49;38;2;38;9;128m▀\e[49;38;2;40;8;129m▀\e[49m   \e[49;38;2;37;5;130m▀\e[49;38;2;38;9;128m▀\e[49;38;2;39;9;128m▀\e[49m \e[m
 ";)
-name=$(figlet -d /usr/share/figlet/fonts -f ANSIShadow "zexy" | lolcat --force-color)
+name=$(figlet -d $HOME/dotfiles/assets/fonts -f ANSIShadow "zexy" | lolcat --force-color)
 
 
 # inspiration code from stackoverflow
 #{ echo "$name"; echo 'EOF';  echo "$stardrop6"; } | awk 'NF==1&&$1=="EOF" {noskip=1; next; } noskip==0 { f[++c]=$0; next; } { printf "%s%s\n",f[++k],$0;}'
-if command -v figlet &> /dev/null ; then
+if ! command -v figlet &> /dev/null ; then
     echo "Figlet not installed....installing Figlet"
     source ./install_program.sh figlet
 fi

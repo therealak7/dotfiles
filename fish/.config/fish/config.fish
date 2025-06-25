@@ -1,0 +1,11 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set -U fish_greeting
+
+starship init fish | source
+
+##### ALIASES #####
+alias lsl='ls -lAgoh --color=auto --group-directories-first --time-style=locale'
+alias dots='cd ~/dotfiles'

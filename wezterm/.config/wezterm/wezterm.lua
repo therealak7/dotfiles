@@ -37,6 +37,7 @@
 -- - Tab and split indices are zero-based.
 
 
+
 -- Pull in the wezterm API
 local wezterm = require "wezterm"
 local mux = wezterm.mux
@@ -63,6 +64,7 @@ config.font_size = 12
 
 -- WINDOW BORDERS
 config.window_decorations = "NONE"
+-- config.window_decorations = "RESIZE"
 
 -- BACKGROUND OPACITY
 config.window_background_opacity = 0.7

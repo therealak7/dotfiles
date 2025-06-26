@@ -14,5 +14,5 @@ alias dots='cd ~/dotfiles'
 alias pdftk='java -jar $HOME/.local/bin/pdftk-all.jar'
 
 alias nv='nvim'
-alias nl='NVIM_APPNAME="nvim_lazy" nvim'
+alias nl='NVIM_APPNAME="nvim-lazyvim" nvim'
 alias nk='NVIM_APPNAME="nvim-kickstart" nvim'

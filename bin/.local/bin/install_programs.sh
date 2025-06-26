@@ -13,18 +13,22 @@ if [ "$os" = "Linux" ]; then
         . /etc/os-release
         distro_id=${ID,,}  # lowercase
         if [ "$distro_id" = "fedora" ]; then
-            sudo $pkg_manager copr enable atim/lazygit -y
-            sudo $pkg_manager copr enable monkeygold/nautilus-open-any-terminal -y
-            sudo $pkg_manager copr enable wezfurlong/wezterm-nightly -y
-            sudo $pkg_manager copr enable alternateved/eza -y
+            sudo dnf copr enable atim/lazygit -y
+            sudo dnf copr enable monkeygold/nautilus-open-any-terminal -y
+            sudo dnf copr enable wezfurlong/wezterm-nightly -y
+            sudo dnf copr enable alternateved/eza -y
+            curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
+
+            sudo dnf install dnf-plugins-core
+            sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
         fi
     fi
 fi
 
 # Installing with package manager
 
-sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish
+sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish git git-lfs brave librewolf wmctrl
 
 # Installing flatpaks
 
-flatpak install flathub app.zen_browser.zen com.github.tenderowl.frog com.valvesoftware.Steam dev.vencord.Vesktop
+flatpak install flathub app.zen_browser.zen com.github.tenderowl.frog com.valvesoftware.Steam dev.vencord.Vesktop eu.betterbird.Betterbird

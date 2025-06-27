@@ -76,7 +76,7 @@ fi
 # Adding repositories
 if [[ "$distro_id" == "fedora" || "$pkg_manager" == "dnf" ]]; then
     echo "here fedora"
-elif [[ "$distro_id" == "opensuse*" || "$distro_id" == "suse" || "$pkg_manager" == "dnf" ]]; then
+elif [[ "$distro_id" == opensuse* || "$distro_id" == "suse" || "$pkg_manager" == "zypper" ]]; then
     echo "opensuse"
 else
     echo "Repositories not set for this distro"

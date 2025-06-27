@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit on error
+set -e
+
 # Determine OS name
 os=$(uname)
 
@@ -8,6 +11,8 @@ if [ "$os" = "Linux" ]; then
 
     # Initialize package manager
     pkg_manager=""
+    distro_id=""
+    distro_name=""
 
     # Detect distribution and package manager
     if [[ -f /etc/os-release ]]; then
@@ -62,18 +67,26 @@ if [ "$os" = "Linux" ]; then
         exit 1
     fi
 
-elif [ "$os" = "Darwin" ]; then
-    if command -v brew >/dev/null; then
-        pkg_manager="brew"
-    else
-        echo "Homebrew not found. Please install it: https://brew.sh"
-        exit 1
-    fi
-
 else
     echo "Unsupported OS: $os"
     exit 1
 fi
 
-echo "$pkg_manager"
 
+# Adding repositories
+if [[ "$distro_id" == "fedora" || "$pkg_manager" == "dnf" ]]; then
+    echo "here fedora"
+elif [[ "$distro_id" == "opensuse*" || "$distro_id" == "suse" || "$pkg_manager" == "dnf" ]]; then
+    echo "opensuse"
+else
+    echo "Repositories not set for this distro"
+fi
+
+# Installing with package manager
+# sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish git git-lfs brave librewolf wmctrl
+#
+# # Installing flatpaks
+# flatpak install flathub app.zen_browser.zen com.github.tenderowl.frog com.valvesoftware.Steam dev.vencord.Vesktop eu.betterbird.Betterbird com.stremio.Stremio
+#
+# # Install Mega - Online cloud storage service
+# wget https://mega.nz/linux/repo/Fedora_42/x86_64/megasync-Fedora_42.x86_64.rpm && sudo dnf install "$PWD/megasync-Fedora_42.x86_64.rpm"

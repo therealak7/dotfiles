@@ -32,3 +32,6 @@ sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat 
 # Installing flatpaks
 
 flatpak install flathub app.zen_browser.zen com.github.tenderowl.frog com.valvesoftware.Steam dev.vencord.Vesktop eu.betterbird.Betterbird
+
+# Install Mega - Online cloud storage service
+wget https://mega.nz/linux/repo/Fedora_42/x86_64/megasync-Fedora_42.x86_64.rpm && sudo dnf install "$PWD/megasync-Fedora_42.x86_64.rpm"

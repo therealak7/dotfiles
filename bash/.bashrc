@@ -12,7 +12,8 @@ fi
 export PATH
 
 ### ENVIRONMENT VARIABLES ###
-export WEZ_CONF="$HOME/.config/wezterm/wezterm.lua"
+export CONFIG_DIR="$HOME/.config"
+export fish_conf="$CONFIG_DIR/fish/config.fish"
 
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:

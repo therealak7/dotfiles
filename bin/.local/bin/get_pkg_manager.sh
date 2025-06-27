@@ -80,6 +80,8 @@ elif [[ "$distro_id" == "opensuse*" || "$distro_id" == "suse" || "$pkg_manager" 
     echo "opensuse"
 else
     echo "Repositories not set for this distro"
+    echo "$distro_id"
+    echo "$distro_name"
 fi
 
 # Installing with package manager

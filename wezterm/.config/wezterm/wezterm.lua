@@ -67,7 +67,7 @@ config.window_decorations = "NONE"
 -- config.window_decorations = "RESIZE"
 
 -- BACKGROUND OPACITY
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.6
 
 -- tmux
 config.leader = { key = "q", mods = "ALT", timeout_milliseconds = 2000 }

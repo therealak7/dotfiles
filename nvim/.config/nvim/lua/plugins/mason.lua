@@ -1,63 +1,66 @@
 return {
-    {
-        "neovim/nvim-lspconfig" ,
-        init = function()
-            local make_client_capabilities = vim.lsp.protocol.make_client_capabilities
-            function vim.lsp.protocol.make_client_capabilities()
-                local caps = make_client_capabilities()
-                if caps.workspace then
-                    caps.workspace.didChangeWatchedFiles = nil
-                end
-                return caps
-            end
-        end,
-        -- config = function()
-        --     local lspconfig = require("lspconfig")
-        --     -- lspconfig.lua_ls.setup({})
-        -- end
+    "mason-org/mason.nvim",
+    lazy = false,
+    dependencies = {
+        "mason-org/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+        "neovim/nvim-lspconfig",
+        -- "saghen/blink.cmp",
     },
-    {
-        "mason-org/mason.nvim",
-        opts = {
+    config = function()
+        -- import mason and mason_lspconfig
+        local mason = require("mason")
+        local mason_lspconfig = require("mason-lspconfig")
+        local mason_tool_installer = require("mason-tool-installer")
+
+        -- NOTE: Moved these local imports below back to lspconfig.lua due to mason depracated handlers
+
+        -- local lspconfig = require("lspconfig")
+        -- local cmp_nvim_lsp = require("cmp_nvim_lsp")             -- import cmp-nvim-lsp plugin
+        -- local capabilities = cmp_nvim_lsp.default_capabilities() -- used to enable autocompletion (assign to every lsp server config)
+
+        -- enable mason and configure icons
+        mason.setup({
             ui = {
                 icons = {
                     package_installed = "✓",
                     package_pending = "➜",
-                    package_uninstalled = "✗"
-                }
-            }
-        }
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "mason-org/mason.nvim"
-        },
-        opts = {
-            ensure_installed = {
-                "clangd",
-                "lua_ls",
-                "luacheck",
-                "stylua",
-                "prettierd",
-                "prettier",
-                "google-java-format",
-                "ktlint",
-                -- "standardrb",
-                "vimls",
-                "beautysh",
-                "buf",
-                "rustfmt",
-                "yamlfix",
-                "shellcheck",
-                "gofmt",
-                "xmllint",
-                "taplo",
-                "htmlbeautifier",
-                "omnisharp",
+                    package_uninstalled = "✗",
+                },
+            },
+        })
 
-            }
-        }
-    }
+        mason_lspconfig.setup({
+            automatic_enable = false,
+            -- servers for mason to install
+            ensure_installed = {
+                "lua_ls",
+                "html",
+                "cssls",
+                "tailwindcss",
+                "gopls",
+                "emmet_ls",
+                "emmet_language_server",
+                "eslint",
+                "marksman",
+            },
+
+        })
+
+        mason_tool_installer.setup({
+            ensure_installed = {
+                "prettier", -- prettier formatter
+                "stylua",   -- lua formatter
+                "isort",    -- python formatter
+                "pylint",
+                "clangd",
+                "denols",
+                { 'eslint_d', version = '13.1.2' },
+            },
+
+            -- NOTE: mason BREAKING Change! Removed setup_handlers
+            -- moved lsp configuration settings back into lspconfig.lua file
+        })
+    end,
 }

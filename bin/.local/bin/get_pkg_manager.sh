@@ -133,7 +133,7 @@ esac
 
 
 # Installing with package manager
-sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish git git-lfs
+sudo $pkg_manager install -y figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish git git-lfs qbittorrent
 
 # Installing flatpaks
 flatpak install flathub com.github.tenderowl.frog com.valvesoftware.Steam dev.vencord.Vesktop eu.betterbird.Betterbird com.stremio.Stremio io.gitlab.librewolf-community com.brave.Browser

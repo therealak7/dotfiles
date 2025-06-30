@@ -36,3 +36,4 @@ alias nwezrc="nvim $WEZTERM_CONFIG_FILE"
 alias swezrc="source $WEZTERM_CONFIG_FILE"
 # Straship config
 alias nshiprc="nvim $CONFIG_DIR/starship.toml"
+alias lg="lazygit"

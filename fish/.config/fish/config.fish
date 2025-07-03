@@ -37,3 +37,19 @@ alias swezrc="source $WEZTERM_CONFIG_FILE"
 # Straship config
 alias nshiprc="nvim $CONFIG_DIR/starship.toml"
 alias lg="lazygit"
+alias greets="sh $HOME/.local/bin/greetings_stardrop.sh"
+
+
+### VOID LINUX ALIASES AND FUNCTIONS ###
+
+# Functions
+function xsrc-install -d "Build and install packages from void-src"
+    command $HOME/void-packages/xbps-src pkg $argv
+    if test $status = 0
+        sudo xbps-install --repository=hostdir/binpkgs $argv
+    end
+end
+
+function xsrc-query -d "Search for packgakes in void-src using ls"
+    ls $HOME/void-packages/srcpkgs | grep $1
+end

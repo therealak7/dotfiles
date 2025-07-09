@@ -1,5 +1,8 @@
 # .bashrc
 
+# If not running interactively do not do anything
+[[ $- != *i* ]] && return
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -47,3 +50,5 @@ then
 	shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
 	exec fish $LOGIN_OPTION
 fi
+
+PS1='[\u@\h \W]\$ '

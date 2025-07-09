@@ -48,13 +48,6 @@ if [ "$os" = "Linux" ]; then
     fi
 fi
 
-
-# Adding flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-# Installing homebrew
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh
-
 # Setting wifi
 if [ ! -f "/var/service/dhcpcd" ]; then
     ln -s /etc/sv/dhcpcd/ /var/service
@@ -74,7 +67,7 @@ if [ -z "$wifi_choice" ] ; then
 elif [ "$wifi_choice" = "N" ] || [ "$wifi_choice" = "n" ]; then
     echo "Not configuring WiFi"
 elif [ "$wifi_choice" = "Y" ] || [ "$wifi_choice" = "y" ]; then
-    echo "Network adapters:"
+    echo "Network Interfaces:"
     wifi_list=$(ip link | awk -F ":" '/^[1-9]/ {print $2}' | grep -v lo | awk '{ print NR ": "  $0}')
     while true ;do
         echo "$wifi_list"
@@ -87,21 +80,60 @@ elif [ "$wifi_choice" = "Y" ] || [ "$wifi_choice" = "y" ]; then
             break
         fi
     done
-    echo "$wifi_list" | awk -v line="$wifi_card" 'NR == line {print $2}'               
+    selected_interface=$("$wifi_list" | awk -v line="$wifi_card" 'NR == line {print $2}')
 else
     echo "Not configuring"
 fi
 
-# TODO: 
-# 1. configure wifi with wpa_supplicant
-# 2. make directories in user folder 
-# 3. Install Niri - packages: 
+while true; do
+    read -rp "Enter WiFi SSID: " ssid
+    read -rp "Enter WiFi password: " password
+    if [ -z "$ssid" ] || [ -z "$password" ]; then
+        echo "SSID or Password not entered"
+        continue
+    fi
+
+    # Create a temporary wpa_supplicant config
+    config="/tmp/test-wifi.conf"
+    wpa_passphrase "$ssid" "$password" > "$config"
+
+    # Kill any existing wpa_supplicant
+    sudo pkill wpa_supplicant 2>/dev/null
+
+    # Start wpa_supplicant in background with debug
+    sudo wpa_supplicant -B -i "$selected_interface" -c "$config" -f /tmp/wpa.log
+    sudo dhcpcd "$selected_wificard"
+
+    # Wait up to 15 seconds for a successful connection
+    for i in {1..15}; do
+        if grep -q "CTRL-EVENT-CONNECTED" /tmp/wpa.log; then
+            echo "Connected to '$ssid' successfully."
+            sudo dhcpcd "$selected_interface" 2>/dev/null
+            rm "$config"
+            wpa_passphrase "$ssid" "$password" | sudo tee /etc/wpa_supplicant/wpa_supplicant.conf
+            break
+        fi
+        sleep 1
+    done
+
+    echo "Failed to connect to '$ssid'."
+    rm "$config"
+done
+
+# Adding flathub repo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Installing homebrew
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh
+
+
+
 
 # Update void packages
 sudo xbps-install -Su
 
 # Cloning the dotfiles git repo
-sudo xbps-install git
+sudo xbps-install git curl
 git clone https://github.com/therealak7/dotfiles
 
 # Adding void-src repository
@@ -110,7 +142,25 @@ cd void-packages
 ./xbps-src binary-bootstrap
 
 # Installing core packages
-sudo xbps-install iwd
+sudo xbps-install iwd mesa-dri elogind dbus polkit lightdm wayland wayland-utils xorg-fonts noto-fonts curl
+
+sudo xbps-install tree clang gcc
+
+# TODO: 
+# 1. configure wifi with wpa_supplicant
+# 2. make directories in user folder 
+# 3. Install Niri - packages: 
+# 4. dbus elogind polkit lightdm mesa-dri wayland wayland-utils xorg-fonts noto-fonts
+#       sudo ln -s  /etc/sv/[dbus/elogind/polkitd] /var/service
+#       dbus-run-session niri --session
+#   
+#   Installing LibreWolf
+#$ su
+# echo 'repository=https://github.com/index-0/librewolf-void/releases/latest/download/' > /etc/xbps.d/20-librewolf.conf
+# xbps-install -Su librewolf
+
+# Downloading Niri packages
+sudo xbps-install niri fuzzel mako xdg-desktop-portal-gtk alacritty swaybg swayidle swaylock xdg-desktop-portal-gnome xwayland-satellite Waybar
 
 # Installing packages from base repository
 sudo xbps-install figlet nvim ripgrep fd-find python3-pip eza lolcat lazygit wezterm fastfetch fzf stow fish git-lfs qbittorrent

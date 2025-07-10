@@ -45,10 +45,11 @@ alias mkdir='mkdir -p'
 alias dots='cd ~/dotfiles'
 
 # If fish shell exists, it is started as the interactive shell in the terminal
-if [[ -f /usr/bin/fish && $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
-then
-	shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-	exec fish $LOGIN_OPTION
+if [ -f /usr/bin/fish ] && [ "$(ps -p $$ -o comm=)" != "fish" ] && [ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" -eq 1 ]; then
+    case "$0" in
+        -bash|-sh) exec fish --login ;;
+        *)        exec fish ;;
+    esac
 fi
 
 PS1='[\u@\h \W]\$ '

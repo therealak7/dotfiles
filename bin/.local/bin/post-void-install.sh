@@ -168,6 +168,8 @@ sudo xbps-install tree clang gcc
 #       sudo ln -s /etc/sv/greetd /var/service/
 # 6. Disable agetty-tty1 service
 #       sudo rm -rf /var/service/agetty-tty1/
+# 7. Installing eww:
+#       req: sudo xbps-install gtk+3-devel gtk-layer-shell-devel pango-devel gdk-pixbuf gdk-pixbuf-devel libdbusmenu-gtk3-devel cairo-devel glib-devel libgcc-devel glibc-devel gcc pkgconf
 #   
 #   Installing LibreWolf
 #$ su

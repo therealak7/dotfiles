@@ -151,8 +151,23 @@ sudo xbps-install tree clang gcc
 # 2. make directories in user folder 
 # 3. Install Niri - packages: 
 # 4. dbus elogind polkit lightdm mesa-dri wayland wayland-utils xorg-fonts noto-fonts
-#       sudo ln -s  /etc/sv/[dbus/elogind/polkitd] /var/service
-#       dbus-run-session niri --session
+#       sudo ln -s  /etc/sv/[dbus/polkitd] /var/service
+#       dbus-run-session niri --dbus-run-session
+# Setting up greetd:
+# 1. Req: greetd tuigreet elogind dbus niri
+# 2. greeter user is needed to run greetd ('_greetd' in void linux)
+#       sudo usermod -M -s /usr/bin/nologin _greetd (no user directorties are made for user and cannot login into it. THIS USER NEEDS TO BE ADDED TO VIDEO GROUP IF A GUI GREETER IS USED)
+# 3. Configure /etc/greetd/config.toml
+#       set vt as any aviablable tty that is not busy (vt=1)
+#
+#       [default-session]
+#       command="greeter_name --cmd 'CMD(eg. sway, dbus-run-session niri)' --time --remember" #--tiem to show time --remeber to remember previous user
+#       user="_greetd" #must be greeter user
+# 4. check /etc/pam.d/greetd config
+# 5. Enable greetd service 
+#       sudo ln -s /etc/sv/greetd /var/service/
+# 6. Disable agetty-tty1 service
+#       sudo rm -rf /var/service/agetty-tty1/
 #   
 #   Installing LibreWolf
 #$ su

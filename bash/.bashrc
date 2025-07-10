@@ -53,3 +53,4 @@ if [ -f /usr/bin/fish ] && [ "$(ps -p $$ -o comm=)" != "fish" ] && [ -z "$BASH_E
 fi
 
 PS1='[\u@\h \W]\$ '
+. "$HOME/.cargo/env"

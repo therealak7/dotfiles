@@ -6,7 +6,8 @@ end
 set -U fish_greeting
 
 # Custom greeting
-sh $HOME/.local/bin/greetings_stardrop.sh
+# sh $HOME/.local/bin/greetings_stardrop.sh
+figlet "zexy"
 
 ##### Environment Variables #####
 export CONFIG_DIR="$HOME/.config"

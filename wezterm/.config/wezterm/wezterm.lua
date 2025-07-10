@@ -57,7 +57,7 @@ wezterm.on('gui-startup', function(cmd)
 end)
 
 -- For example, changing the color scheme:
-config.color_scheme = "tokyonight-storm"
+config.color_scheme = "Tokyo Night Storm"
 config.font =
     wezterm.font("JetBrainsMonoNL NF")
 config.font_size = 12
@@ -67,7 +67,7 @@ config.window_decorations = "NONE"
 -- config.window_decorations = "RESIZE"
 
 -- BACKGROUND OPACITY
-config.window_background_opacity = 0.6
+-- config.window_background_opacity = 0.6
 
 -- tmux
 config.leader = { key = "q", mods = "ALT", timeout_milliseconds = 2000 }

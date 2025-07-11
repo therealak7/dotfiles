@@ -102,7 +102,7 @@ output "eDP-1" {
 }
 
 // Thsi is for VM Monitor/Display [check output name from 'niri msg outputs']
-output "Red Hat, Inc. QEMU Monitor Unknown" {
+output "Virtual-1" {
     // check above for examples and guide
     mode "1920x1080@60"
     scale 1.25

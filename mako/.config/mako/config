@@ -1,0 +1,5 @@
+max-history=5
+
+sort=+time
+
+default-timeout=5000

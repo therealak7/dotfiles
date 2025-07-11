@@ -10,4 +10,12 @@
            :layer "top"
            :namespace "toppanel"
            :wm-ignore false
-  "example content")
+    (greeter    :text "Say Hello!"
+                :name "Akash"))
+
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    (label :text text)
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))

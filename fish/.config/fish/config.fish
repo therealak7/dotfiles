@@ -19,6 +19,7 @@ starship init fish | source
 
 ##### ALIASES #####
 alias lsl='ls -lAgoh --color=auto --group-directories-first --time-style=locale'
+alias cls='clear'
 alias dots='cd ~/dotfiles'
 
 alias pdftk='java -jar $HOME/.local/bin/pdftk-all.jar'
@@ -40,6 +41,13 @@ alias nshiprc="nvim $CONFIG_DIR/starship.toml"
 alias lg="lazygit"
 alias greets="sh $HOME/.local/bin/greetings_stardrop.sh"
 
+
+### ABBREVIATIONS ###
+
+abbr .. 'cd ..'
+abbr xi 'xbps-install'
+abbr sxi 'sudo xbps-install'
+abbr sxr 'sudo xbps-remove'
 
 ### VOID LINUX ALIASES AND FUNCTIONS ###
 

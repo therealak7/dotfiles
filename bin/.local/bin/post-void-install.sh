@@ -170,6 +170,7 @@ sudo xbps-install tree clang gcc
 #       sudo rm -rf /var/service/agetty-tty1/
 # 7. Installing eww:
 #       req: sudo xbps-install gtk+3-devel gtk-layer-shell-devel pango-devel gdk-pixbuf gdk-pixbuf-devel libdbusmenu-gtk3-devel cairo-devel glib-devel libgcc-devel glibc-devel gcc pkgconf
+#       sudo socat jq [for backend]
 #   
 #   Installing LibreWolf
 #$ su

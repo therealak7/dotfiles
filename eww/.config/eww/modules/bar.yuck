@@ -1,0 +1,10 @@
+(defwidget bar []
+  (box
+    (box :orientation "h" :space-evenly false :halign "start"
+      (workspaces)
+     )
+    (box :orientation "h" :space-evenly false :halign "centre"
+      (clock)
+     )
+   )
+)

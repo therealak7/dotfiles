@@ -1,0 +1,6 @@
+(deflisten current_workspace :initial "1"
+"scripts/get-active-workspace.sh")
+
+(deflisten workspaces :initial "[]" 
+"scripts/get-workspaces.sh")
+

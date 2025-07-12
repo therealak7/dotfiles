@@ -1,3 +1,7 @@
+(include "windows.yuck")
+(include "variables.yuck")
+
 (include "modules/clock.yuck")
-(include "modules/workspaces.yuck")
+; (include "modules/workspaces.yuck")
 (include "modules/bar.yuck")
+(include "modules/tray.yuck")

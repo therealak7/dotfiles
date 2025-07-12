@@ -1,10 +1,17 @@
 (defwidget bar []
   (box
-    (box :orientation "h" :space-evenly false :halign "start"
-      (workspaces)
-     )
-    (box :orientation "h" :space-evenly false :halign "centre"
+    ; (box :orientation "h" :space-evenly false :halign "start"
+    ;   (workspaces)
+    ;  )
+    (box :orientation "h" :space-evenly true :halign "centre"
       (clock)
      )
+    (box :orientation "h" :space-evenly false :halign "right"
+        (tray_button)
+        ; (language)
+        ; (expand)
+        ; (indicator)
+        ; (power)
+      ) 
    )
 )

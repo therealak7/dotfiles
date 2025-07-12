@@ -142,7 +142,7 @@ cd void-packages
 ./xbps-src binary-bootstrap
 
 # Installing core packages
-sudo xbps-install iwd mesa-dri elogind dbus polkit lightdm wayland wayland-utils xorg-fonts noto-fonts curl p7zip unzip
+sudo xbps-install iwd mesa-dri elogind dbus polkit lightdm wayland wayland-utils xorg-fonts noto-fonts curl p7zip unzip libnotify
 
 sudo xbps-install tree clang gcc
 

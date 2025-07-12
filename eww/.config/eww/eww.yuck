@@ -5,3 +5,24 @@
 ; (include "modules/workspaces.yuck")
 (include "modules/bar.yuck")
 (include "modules/tray.yuck")
+
+
+(defwindow example
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "20px"
+                               :width "90%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "fg"
+            :exclusive true
+           :wm-ignore false
+(greeter :text "say hello! "
+          :name "Akash"))
+
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))

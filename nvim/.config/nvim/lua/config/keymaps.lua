@@ -1,7 +1,12 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map('n', '<CR>', '<cmd>nohlsearch<CR><CR>') -- clear highlights on search when pressing ESC key
+map('n', '<Esc>', '<cmd>nohlsearch<CR>') -- clear highlights on search when pressing ESC key
+
+-- add newline without entering into insert mode
+map('n', '<CR>', 'm`o<Esc>``')
+map('n', '<S-CR>', 'm`O<Esc>``')
+
 map('i', "jj", '<Esc>', opts) -- remap jj jk and kj to esc while in esc mode
 map('i', "jk", '<Esc>', opts) -- remap jj jk and kj to esc while in esc mode
 map('i', "kj", '<Esc>', opts) -- remap jj jk and kj to esc while in esc mode

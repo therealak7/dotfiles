@@ -171,6 +171,17 @@ sudo xbps-install tree clang gcc
 # 7. Installing eww:
 #       req: sudo xbps-install gtk+3-devel gtk-layer-shell-devel pango-devel gdk-pixbuf gdk-pixbuf-devel libdbusmenu-gtk3-devel cairo-devel glib-devel libgcc-devel glibc-devel gcc pkgconf
 #       sudo socat jq [for backend]
+# 8. Installing pipewire
+#  sudo xbps-install pipewire pipewire-devel alsa-pipewire wireplumber pulseaudio
+#  mkdir -p /etc/alsa/conf.d
+# sudo ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/
+# sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/
+# edit /etc/pulse/client.conf
+#       ; autospawn = yes/no > autospawn = no
+# open st startup in window manager conf
+#   pipewire
+#   pipewire-pulse
+#   wireplumber
 #   
 #   Installing LibreWolf
 #$ su

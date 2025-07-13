@@ -271,14 +271,13 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "foot" "--server"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "pipewire"
 spawn-at-startup "pipewire-pulse"
 spawn-at-startup "wireplumber"
-// spawn-at-startup "swayidle"
+spawn-at-startup "swayidle"
 spawn-at-startup "swaybg" "-i" "/home/ak/dotfiles/assets/wallpapers/dark/wall2_galaxy.png"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -394,6 +393,9 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
+    // TODO: Ckech its keysym
+    // XF86KbdBrightnessDown allow-when-locked=true { spawn "notify-send" "\"hello\""; }
+    // XF86KbdBrightnessUp allow-when-locked=true { spawn "notify-send" "\"hello\""; }
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.

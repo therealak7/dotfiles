@@ -1,11 +1,15 @@
 (defwidget tray []
-    (revealer :transition "slideup" :reveal {open_tray} :duration {ANIM_DURATION}
-        (box :class "tray_box" :orientation "h" :space-evenly false
-            (systray :hexpand true :halign "center" :pack-direction "left")
+    ; (revealer :transition "slidedown" :reveal {open_tray} :duration {ANIM_DURATION}
+        (box 
+ ;; :class "tray_box" 
+ :orientation "horizontal" :halign "centre" :hexpand true :space-evenly false
+            (systray :orientation "horizontal")
+            ; (systray :hexpand true :halign "center" :pack-direction "left")
         )
     )
-)
 
 (defwidget tray_button []
-    (button :class "tray_button" :onclick "scripts/toggle_tray.sh" "")
+    (button 
+ ;; :class "tray_button" 
+ :onclick "scripts/toggle-tray.sh" "")
 )

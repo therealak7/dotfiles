@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 signal=$(nmcli -f in-use,signal dev wifi | rg "\*" | awk '{ print $2 }')
 essid=$(nmcli -t -f NAME connection show --active | head -n1 | sed 's/\"/\\"/g')

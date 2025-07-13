@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 state=$(eww get open_tray)
 
 open_tray() {
-    if [[ -z $(eww windows | grep '*tray') ]]; then
+    if ! eww list-windows | grep '*tray'; then
         eww open tray
     fi
     eww update open_tray=true

@@ -1,11 +1,11 @@
 (defwidget indicator []
-    (button :onclick "scripts/toggle_control_center.sh" 
-;; 
- ;; :class "indicator" 
+    (button :onclick "eww open --toggle control_center; eww open --toggle corner-right; eww open --toggle topcorner-right" 
+;;                                             
+ :class "indicator"                         
  
 
         (box :orientation "h" :space-evenly false
-            (recorder_icon)
+            ; (recorder_icon)
             (network_icon)
             (do-not-disturb_icon)
             (theme_icon)
@@ -18,7 +18,7 @@
 (defwidget state_icon [condition text]
     (label 
 ;; 
- ;; :class "indicator-icon" 
+ :class "indicator-icon" 
  
  :visible {condition} :valign "center" :text {text})
 )

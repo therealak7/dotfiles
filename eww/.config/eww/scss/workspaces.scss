@@ -1,0 +1,27 @@
+
+.workspaces {
+    border-radius: 1rem;
+    padding: 0.9rem;
+    margin: 0 1rem;
+    background-color: $on-secondary;
+}
+
+.workspace {
+    border-radius: 1rem;
+    background-color: $inverse-primary;
+    margin: 0 0.25rem;
+    padding: 0 0.8rem;
+    transition: 0.3s;
+
+    &.current {
+        background-color: $primary;
+        padding: 0 2.3rem;
+    }
+}
+
+.workspace:hover {
+    background-color: mix($on-primary, $on-surface, 70%);
+    &.current {
+        background-color: mix($primary, $on-surface, 70%);
+    }
+}

@@ -1,0 +1,79 @@
+
+
+.volume-osd {
+   @include window;
+   background-color: $background ;
+   box-shadow: 0 0 0 0px black;
+   min-width: 25rem;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+.volume-control-center {
+    background-color: $background ;
+    margin-top: 1rem;
+}
+
+.volume-scale trough {
+    background-color: $on-secondary;
+    border-radius: 1rem;
+    min-height: 2.25rem;
+}
+
+
+.volume-scale trough highlight {
+    background-color: $primary;
+    border-radius: 1rem;
+    min-height: 2.25rem;
+}
+
+.volume-icon {
+    margin-left: 0.75rem;
+    font-size: 1.5rem;
+
+    &.less {
+        color: $on-surface;
+    };
+
+    &.more {
+        color: $surface;
+    };
+}
+
+.volume-arrow {
+    color: $primary;
+    margin-left: 0.5rem;
+    font-size: 2rem;
+    min-width: 2.25rem;
+    border-radius: 2rem;
+    transition: 0.3s;
+}
+
+.volume-arrow:hover {
+    background-color: mix($surface, $on-surface, 70%);
+}
+
+.volume-mute {
+    background-color: $on-secondary;
+    color: $on-surface;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    min-width: 2.25rem;
+    border-radius: 2rem;
+    transition: 0.3s;
+
+    &.active {
+        background-color: $primary;
+        color: $surface;
+    }
+
+    &.active:hover {
+        background-color: mix($primary, $on-surface, 70%);
+    }
+}
+
+.volume-mute:hover {
+    background-color: mix($surface-variant, $on-surface-variant, 70%);
+}

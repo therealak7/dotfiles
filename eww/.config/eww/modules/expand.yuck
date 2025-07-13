@@ -10,7 +10,7 @@
      (button 
        ; 
 ;;
- ;; :class "expand" 
+ :class "expand" 
 
 
              (label :text ""))
@@ -20,12 +20,12 @@
                    :space-evenly false
                    ; 
 ;;
- ;; :class "tools-box" 
+ :class "tools-box" 
 
 
                    (button 
 ;;
- ;; :class "picker" 
+ :class "picker" 
 
 
                           :onclick "sleep 0.1 && scripts/picker.sh &"
@@ -33,7 +33,7 @@
                    (button
                      ; 
 ;;
- ;; :class "screenshot" 
+ :class "screenshot" 
 
 
                           :onclick "sleep 0.1 && scripts/screenshot &"

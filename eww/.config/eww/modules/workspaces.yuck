@@ -4,12 +4,12 @@
     (box :orientation "h"
          :space-evenly false
          ; 
- ;; :class "workspaces" 
+ :class "workspaces" 
 
          :hexpand true
       (for workspace in workspaces
         (button 
- ;; :class "workspace ${current_workspace == workspace.id ? " current" : ""}"
-                :onclick "hyprctl dispatch workspace ${workspace.id}"
-                "${current_workspace == workspace.id ? " " : " "}"))))
+ :class "workspace ${current_workspace == workspace.idx ? " current" : ""}"
+                :onclick "niri msg action focus-workspace ${workspace.idx}"
+                "${current_workspace == workspace.idx ? " " : " "}"))))
 ; )

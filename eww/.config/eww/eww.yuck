@@ -2,6 +2,7 @@
 (include "variables.yuck")
 
 
+(include "modules/volume.yuck")
 (include "modules/bar.yuck")
 (include "modules/clock.yuck")
 (include "modules/control_center.yuck")

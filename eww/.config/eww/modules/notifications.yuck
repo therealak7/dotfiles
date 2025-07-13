@@ -1,34 +1,34 @@
 (defwidget notification [notify]
     (box :orientation "v" :space-evenly false :hexpand true
         (box :orientation "h" :space-evenly false :hexpand true 
- ;; :class "notification-info" 
+ :class "notification-info" 
 
             (image :valign "start" 
- ;; :class "notification-image" 
+ :class "notification-image" 
  :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 48 :image-height 48)
             (box :orientation "v" :space-evenly false :hexpand true
                 (box :orientation "h" :space-evenly false
                     (label :halign "start" 
- ;; :class "notification-app" 
+ :class "notification-app" 
  :visible {notify.app != "null" ? true :false} :text {notify.app})
                     (button :hexpand true :halign "end" 
- ;; :class "notification-close" 
+ :class "notification-close" 
  :onclick "scripts/notifications.sh close ${notify.id}" "󰅖")
                 )
                 (label :halign "start" 
- ;; :class "notification-summary" 
+ :class "notification-summary" 
  :visible {notify.summary != "null" ? true :false} :wrap true :markup {notify.summary})
                 (label :halign "start" 
- ;; :class "notification-body" 
+ :class "notification-body" 
  :visible {notify.body != "null" ? true :false} :wrap true :markup {notify.body})
             )
         )
         (box :orientation "h" :space-evenly false 
- ;; :class "notification-action-box" 
+ :class "notification-action-box" 
 
             (for action in {notify.actions}
                 (button 
- ;; :class "notification-action" 
+ :class "notification-action" 
  :onclick "scripts/notifications.sh action ${notify.id} ${action[0]}" {action[1]})
             )
         )
@@ -37,23 +37,23 @@
 
 (defwidget notifications []
     (box :orientation "v" :space-evenly false 
- ;; :class "notifications-center" 
+ :class "notifications-center" 
 
         (box :orientation "h" :space-evenly true
             (label 
- ;; :class "notifications-header-text" 
+ :class "notifications-header-text" 
  :halign "start" :text "Notifications")
             (button :halign "end" 
- ;; :class "notifications-clear-button" 
+ :class "notifications-clear-button" 
  :onclick "scripts/notifications.sh clear" "Clear all")
         )
         (scroll :vscroll true 
- ;; :class "notifications-scroll" 
+ :class "notifications-scroll" 
 
             (box :orientation "v" :space-evenly false
                 (for notify in {notifications.notifications}
                     (box :orientation "h" :space-evenly false 
- ;; :class "notification-box" 
+ :class "notification-box" 
 
                         (notification :notify {notify})
                     )   

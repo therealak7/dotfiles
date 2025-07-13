@@ -142,7 +142,7 @@ cd void-packages
 ./xbps-src binary-bootstrap
 
 # Installing core packages
-sudo xbps-install iwd mesa-dri elogind dbus polkit lightdm wayland wayland-utils xorg-fonts noto-fonts curl p7zip unzip libnotify
+sudo xbps-install iwd mesa-dri elogind dbus polkit lightdm wayland wayland-utils xorg-fonts noto-fonts curl p7zip unzip libnotify grim slurp
 
 sudo xbps-install tree clang gcc
 
@@ -183,6 +183,12 @@ sudo xbps-install tree clang gcc
 #   pipewire-pulse
 #   wireplumber
 #   
+### Adding hyprland void repo
+# echo repository=https://raw.githubusercontent.com/Makrennel/hyprland-void/repository-x86_64-glibc | sudo tee /etc/xbps.d/hyprland-void.conf
+#
+# sudo xbps-install -S
+# sudo xbps-install hyprpicker
+#
 #   Installing LibreWolf
 #$ su
 # echo 'repository=https://github.com/index-0/librewolf-void/releases/latest/download/' > /etc/xbps.d/20-librewolf.conf

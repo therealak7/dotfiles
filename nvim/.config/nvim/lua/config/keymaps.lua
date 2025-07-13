@@ -54,8 +54,29 @@ end, { desc = "Copy file path to clipboard" })
 ---- FZF LUA ----
 map("n", "<leader>ff", require("fzf-lua").files, {desc = "Fzf files"})
 map("n", "<leader>/", require("fzf-lua").buffers, {desc = "Fzf buffers"})
--- map("n", "<leader>l", require("fzf-lua").live_grep, {desc = "Fzf live grep"})
--- map("n", "<leader>g", require("fzf-lua").grep, {desc = "Fzf grep"})
+map("n", "<leader>rg", function()
+    require("fzf-lua").grep({
+        actions = {
+            ["alt-q"] = { 
+                fn = require("fzf-lua.actions").file_edit_or_qf,
+                prefix = "select-all+accept",
+            },
+        },
+    })
+    end, {desc = "Fzf live grep with QF support"})
+-- map("n", "<leader>lrg", require("fzf-lua").live_grep, {desc = "Fzf live grep"})
+map("n", "<leader>lrg", function()
+    require("fzf-lua").live_grep({
+        actions = {
+            ["alt-q"] = { 
+                fn = require("fzf-lua.actions").file_edit_or_qf,
+                prefix = "select-all+accept",
+            },
+        },
+    })
+    end, {desc = "Fzf live grep with QF support"})
+-- map("n", "<leader>rg", require("fzf-lua").grep, {desc = "Fzf grep"})
+-- map("n", "ctrl-q", require("fzf-lua").quickfix, {desc = "Send results to quickfix list"})
 map("n", "<leader>k", require("fzf-lua").builtin, {desc = "Fzf builtin commands"})
 map(
     {"n", "v"},

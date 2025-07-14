@@ -7,7 +7,7 @@ set -U fish_greeting
 
 # Custom greeting
 # sh $HOME/.local/bin/greetings_stardrop.sh
-figlet "zexy"
+figlet -c -f "$HOME/dotfiles/assets/fonts/SmSlant.flf" "zexy"
 
 ##### Environment Variables #####
 export CONFIG_DIR="$HOME/.config"

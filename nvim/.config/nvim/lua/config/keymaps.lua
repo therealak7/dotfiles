@@ -13,8 +13,8 @@ map('i', "kj", '<Esc>', opts) -- remap jj jk and kj to esc while in esc mode
 
 map('i', "WW", '<Esc>:w<CR>', opts) -- write in insert mode with WW
 map('i', "ZZ", '<Esc>:wq<CR>', opts) -- write and quit in insert mode with WW
-map('n', "WW", ':w<CR>', opts) -- write in normal mode with WW
-map('n', "ZZ", ':wq<CR>', opts) -- write and quit in normal mode with WW
+map('n', "<leader>ww", ':w<CR>', opts) -- write in normal mode with WW
+map('n', "<leader>zz", ':wq<CR>', opts) -- write and quit in normal mode with WW
 
 --  Use CTRL+<hjkl> to switch between window splits
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

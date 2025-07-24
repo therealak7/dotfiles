@@ -1,0 +1,28 @@
+(defwidget topbar-container[]
+  (box :class "topbar-container"
+      (box
+        :orientation "horizontal"
+        :halign "start"
+        :hexpand true
+        :active true
+        ; (workspaces)
+        )
+      (box
+        :orientation "horizontal"
+        :halign "center"
+        :hexpand false
+        :active true
+        (clock)
+        )
+      (box
+        :orientation "horizontal"
+        :halign "end"
+        :hexpand false
+        :active true
+        ; (tray-container)
+        (battery)
+        (power-tray-toggle)
+        )
+      )
+  )
+

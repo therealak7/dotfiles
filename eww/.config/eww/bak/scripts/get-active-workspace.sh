@@ -14,7 +14,7 @@ niri msg --json workspaces | jq '.[] | select(.is_focused == true ) | .idx'
 # while IFS= read -r id; do
 #     echo "ID: $id"
 # done < <(niri msg --json event-stream | jq 'select(.WorkspaceActivated) | .WorkspaceActivated.id')
-niri msg --json event-stream | jq 'select(.WorkspaceActivated) | .WorkspaceActivated.id'
+niri msg --json event-stream | jq 'select(.WorkspaceActivated) | .WorkspaceActivated.id' 2>/dev/null
 
 # niri msg --json event-stream | jq -c 'select(.WorkspaceActivated) | .WorkspaceActivated.id' | while read -r id; do idx=$(awk -v id="$id" '$1 == id { print $2 }' "$MAP_FILE")
 #

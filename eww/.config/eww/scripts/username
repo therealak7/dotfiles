@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+user=$(whoami)
+mid=$(echo "$user" | sed 's/./& /g' | sed 's/ $//')  # --> "z e x y"
+len_user=${#user}
+len_mid=${#mid}
+pad=$(( (20 - len_mid - len_user) / 2 ))  # Subtracting 4 for 2 slashes and 2 spaces
+
+terminal_username=$(printf "/ %*s%s%*s /\n" $pad "" "$mid" $pad "")
+eww update terminal-username="$terminal_username"

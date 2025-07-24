@@ -1,16 +1,115 @@
+$round_max: 3px;
+$font_sans: "Google Sans";
 
-.power {
-    font-size: 2.2rem;
-    font-weight: bolder;
-    background-color: $primary;
-    color: $surface;
-    border-radius: 2rem;
-    padding: 0 8 0.0rem;
-    margin-left: 1.2rem;
-    margin-right: 0.8rem;
-    transition: 0.3s;
+.power-tray-toggle {
+  @include topbar-widgets-box;
+  // color: $primary;
+  color: $red;
+  padding: 0px 8px;
+  &:hover {
+    background-color: $red;
+    color: $bg_highlight;
+  }
 }
 
-.power:hover {
-    background-color: mix($primary, $on-surface, 70%);
+.power-tray {
+  background-color: $background;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 0px;
+  border-color: $outline;
+}
+
+$powermenu_border_color: rgba($outline, 0.3);
+
+window.powermenu {
+  background: transparent;
+}
+
+.powermenu,
+.powermenu-overlay {
+  background: rgba($bg, 0.6);
+}
+
+.container {
+  background: $bg;
+  padding: 30px;
+}
+
+.button-container {
+  .button {
+    min-width: 54px;
+    min-height: 54px;
+    font-size: 50;
+    padding: 20px 30px;
+    margin: 10px 10px;
+
+    &.poweroff {
+      color: $red;
+      &:hover {
+        color: $bg;
+        background: $red;
+      }  
+    }
+    &.reboot {
+      color: $green;
+      &:hover {
+        color: $bg;
+        background-color: $green;
+      }  
+    }
+    &.exit {
+      color: $blue;
+      &:hover {
+        color: $bg;
+        background-color: $blue;
+      }  
+    }
+    &.hibernate {
+      color: $teal;
+      &:hover {
+        color: $bg;
+        background-color: $teal;
+      }  
+    }
+    &.suspend {
+      color: $orange;
+      &:hover {
+        color: $bg;
+        background-color: $orange;
+      }  
+    }
+    &.lock {
+      color: $purple;
+      &:hover {
+        color: $bg;
+        background-color: $purple;
+      }  
+    }
+  }
+}
+
+.terminal {
+  font-weight: bold;
+  font-family: "Noto Sans Mono";
+  font-size: 17pt;
+  &.code{
+    padding-left: 80px;
+  }
+  .flavor {
+    font-size: 35pt;
+    font-family: "Baro Contour"
+  }
+  .blink {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(2);
+    animation-iteration-count: infinite;
+  }
+
+  &.flicker {
+    // 10 steps since we are using increments of 10% in the keyframes
+    animation: flicker 1.5s steps(10);
+    animation-delay: 0.3s;
+  }
 }

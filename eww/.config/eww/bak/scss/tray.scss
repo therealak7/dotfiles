@@ -1,6 +1,6 @@
 
 .tray_box {
-    background-color: $background;
+    background-color: $on-secondary;
     border-radius: 1rem;
     min-width: 5rem;
     min-height: .5rem;
@@ -8,12 +8,13 @@
 }
 
 .tray_button {
-    
-    border-radius: 0.5rem;
-    padding: 0 0.5rem;
-    margin: 0 0.95rem;
+    // background-color: #FF0000;
+    background-color: $on-secondary;
+    border-radius: 15px;
+    padding: 0px 0.9rem;
+    margin: 5px 5px 0px 5px;
     transition: 0.3s;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .tray_button:hover {

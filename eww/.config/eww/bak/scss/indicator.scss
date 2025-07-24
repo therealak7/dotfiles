@@ -1,16 +1,16 @@
 
 .indicator {
     background-color: $on-secondary;
-    border-radius: 1rem;
-    padding: 0rem 1.0rem;  // Corrected padding syntax
-    margin: 0 0.5rem;
+    border-radius: 15px;
+    padding: 0rem 12px;  // Corrected padding syntax
+    margin: 5px 5px 0px 5px;
     margin-right: 0rem;
     transition: 0.3s;
 }
 
 .indicator-icon {
-    margin: 0 0.6rem;
-    font-size: 1.5rem;
+    margin: 0 5px;
+    font-size: 1.2rem;
 }
 
 .indicator:hover {

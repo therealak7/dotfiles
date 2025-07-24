@@ -1,12 +1,130 @@
-;; First, declare the variable to control the slider
-(defvar show_clock false)
+(defvar powermenu-visible false)
+(defvar terminal-username "/      z e x y      /")
+(defvar powermenu-button-hovered false)
+(defvar powermenu-button-selected "")
+(defvar screen-lock-input "")
+(defvar screen-lock-input-masked "")
+; "insert" or "delete" or "clear"
+(defvar screen-lock-input-last-action "clear")
+(defvar screen-lock-auth-failed false)
+(defpoll figlet-output :interval "30s" "figlet -f SmSlant zexy")
 
-;; The power widget with sliding clock
-(defwidget power []
-  (eventbox :onhover "eww update show_clock=true"
-            :onhoverlost "eww update show_clock=false"
-    (box :orientation "horizontal"
-         :space-evenly false
-      (button :class "power" 
-              :onclick "{$HOME}.config/eww/scripts/powermenu.sh &"
-        (label :text "⏻")))))
+
+(defwidget power-tray-toggle []
+  (box
+    :orientation "horizontal"
+    :space-evenly false
+    :halign "center"
+    (button
+    :class "power-tray-toggle"
+      :onclick "${eww-scripts}/username && eww open --toggle powermenu "
+      (label :text "⏻")
+      )
+    )
+  )
+
+(defwidget powermenu []
+  (eventbox
+    :halign "fill"
+    :valign "fill"
+    :onclick "eww close powermenu"
+    :onmiddleclick "eww close powermenu"
+    :onrightclick "eww close powermenu"
+    :class "powermenu"
+    (box
+      :halign "center"
+      :valign "center"
+      :class "container"
+      :orientation "vertical"
+      :space-evenly false
+      (box :class "button-container"
+           :orientation "vertical"
+           :hexpand true
+           :vexpand true
+           :halign "center"
+           :valign "start"
+           :space-evenly false
+        (box
+          (powermenu-button
+            :extra-class "poweroff"
+            :text "poweroff"
+            :symbol "⏻"
+            :onclick "loginctl poweroff &"
+            )
+          (powermenu-button
+            :extra-class "reboot"
+            :text "reboot"
+            :symbol ""
+            :onclick "loginctl reboot &"
+            )
+          (powermenu-button
+            :extra-class "exit"
+            :text "exit"
+            :symbol ""
+            :onclick "niri msg action quit &"
+            )
+          )
+
+        (box
+          (powermenu-button
+            :extra-class "hibernate"
+            :text "hibernate"
+            :symbol ""
+            :onclick "eww close powermenu && loginctl hibernate &"
+            )
+          (powermenu-button
+            :extra-class "suspend"
+            :text "suspend"
+            :symbol "󰒲"
+            :onclick "eww close powermenu && loginctl suspend &"
+            )
+          (powermenu-button
+            :extra-class "lock"
+            :text "lock"
+            :symbol ""
+            :onclick "swaylock"
+            )
+          )
+        (box :class "terminal flicker"
+             :valign "start"
+             :vexpand true
+             :halign "center"
+             :orientation "vertical"
+             :space-evenly false
+             :spacing 5
+          (label :class "flavor" :text "${terminal-username}" )
+          (box :halign "start"
+               :space-evenly false
+            (label
+              :class "terminal code"
+              :text " $ ${powermenu-button-selected}"
+              )
+            ; "$ "
+            ; "${powermenu-button-selected}"
+            (box :class "blink" "_")))
+        )
+      ) 
+    )
+  )
+
+
+(defwidget powermenu-button [extra-class text symbol onclick]
+  (eventbox
+    ; Without the delay some events are frequently overwritten by the
+    ; onhoverlost command. We want onhoverlost to always finish before onhover.
+    ; The added delay is *not* a perfect solution (it sometimes causes a hovered
+    ; item to be active after mouse leaving) but it's the price we have to pay
+    ; for managing hover state with eww variables.
+    :onhover "(sleep 0.02 && eww update powermenu-button-hovered=true powermenu-button-selected=\"${extra-class}\") &"
+    ; :onhoverlost "eww update powermenu-button-hovered=false powermenu-button-selected= &"
+    :onclick "${onclick}"
+    (button
+      :vexpand false
+      :halign "center"
+      :hexpand false
+      :valign "start"
+      :class "button ${extra-class}"
+      ; :class "button ${extra-class} ${(powermenu-button-selected == extra-class) ? "this-selected" : (powermenu-button-selected == "") ? "nothing-selected" : "not-selected"}"
+      (box :class "symbol" "${symbol}"))
+    )
+  )

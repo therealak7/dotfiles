@@ -1,0 +1,45 @@
+
+.workspaces {
+    border-radius: 50px;
+    padding: 11px 9px;
+    margin: 3px 3px; 
+    background-color: $on-secondary;
+}
+
+// .workspace {
+//     background-color: $inverse-surface;
+//     border-radius: 50px;
+//     margin: 0px 3px 0px 0px;
+//     padding: 0px 0px;
+//     transition: 0.3s;
+//     min-height: 7px;
+//     min-width: 5px;
+//
+// }
+.workspace {
+    border-radius: 1rem;
+    background-color: $inverse-surface;
+    margin: 0 3px;
+    padding: 0 0px;
+    transition: 0.3s;
+
+    &.current {
+        background-color: $primary;
+        padding: 0 9px;
+    }
+}
+// .current_workspace {
+//       background-color: $primary;
+//     border-radius: 50px;
+//     margin: 0px -7px 0px 3px;
+//     padding: 0px 0px;
+//     transition: 0.3s;
+//     min-height: 7px;
+//       min-width: 17px;
+//     }
+.workspace:hover {
+    background-color: mix($on-primary, $on-surface, 70%);
+    &.current {
+        background-color: mix($primary, $on-surface, 70%);
+    }
+}

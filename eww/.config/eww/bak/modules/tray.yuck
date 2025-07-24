@@ -14,5 +14,5 @@
 (defwidget tray_button []
     (button 
  :class "tray_button" 
- :onclick "eww update tray-open=${!tray-open}; eww open --toggle tray" "${tray-open == false ?'':''}")
+ :onclick "eww update tray-open=${!tray-open}; eww open --toggle tray" "${tray-open == false ?'':''}")
 )

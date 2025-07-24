@@ -1,32 +1,14 @@
-
 .clock {
-    // background-color: #FF0000;
-    background-color: $on-secondary;
-    // color: #0000FF;
-    color: $on-background;
-    border-radius: 2rem;
-    padding: 5px 17px;
-    margin: 3px 3px;
-    transition: background-color 0.3s;  // Specify which property should transition
-    // font-size: 1rem;
-
-    &:hover { // Nesting hover inside .clock for better specificity
-        background-color: mix($surface-variant, $on-surface-variant, 70%);
-    }
+  @include topbar-widgets-box;
+  padding: 4px 15px;
+  &:hover {
+    background-color: $surface-container-highest;
+  }
 }
 
 .clock-label {
-
-    // font-family: "SF Pro Display"
-}
-
-.big_clock_box {
-    @include window;
-    margin-top: 20rem;
-    margin-right: 20rem;
-    border-radius: 2rem;
-}
-
-.big_clock_label {
-    font-size: 10rem;
+  font-family: "SFProDisplay Nerd Font Propo";
+  font-weight: Bold;
+  font-size: 15;
+  color: $on-background;
 }

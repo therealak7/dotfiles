@@ -7,7 +7,7 @@ set -U fish_greeting
 
 # Custom greeting
 # sh $HOME/.local/bin/greetings_stardrop.sh
-figlet -c -f "$HOME/dotfiles/assets/fonts/SmSlant.flf" "zexy"
+figlet -c -f "$HOME/dotfiles/assets/fonts/SmSlant.flf" "zexy" | lolcat
 
 ##### Environment Variables #####
 export CONFIG_DIR="$HOME/.config"
@@ -38,6 +38,9 @@ alias nwezrc="nvim $WEZTERM_CONFIG_FILE"
 alias swezrc="source $WEZTERM_CONFIG_FILE"
 # Straship config
 alias nshiprc="nvim $CONFIG_DIR/starship.toml"
+# kitty Config
+alias nkittyrc="nvim $CONFIG_DIR/kitty/kitty.conf"
+alias skittyrc="source $CONFIG_DIR/kitty/kitty.conf"
 alias lg="lazygit"
 alias greets="sh $HOME/.local/bin/greetings_stardrop.sh"
 

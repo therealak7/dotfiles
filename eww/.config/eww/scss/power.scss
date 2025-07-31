@@ -32,8 +32,10 @@ window.powermenu {
 }
 
 .container {
+  border-radius: 30px;
   background: $bg;
-  padding: 30px;
+  padding: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .button-container {
@@ -100,16 +102,23 @@ window.powermenu {
     font-size: 35pt;
     font-family: "Baro Contour"
   }
+
+  &.flicker {
+    padding-top: 30px;
+    // 10 steps since we are using increments of 10% in the keyframes
+    animation: flicker 1.5s steps(10);
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
   .blink {
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: steps(2);
     animation-iteration-count: infinite;
   }
-
-  &.flicker {
-    // 10 steps since we are using increments of 10% in the keyframes
-    animation: flicker 1.5s steps(10);
-    animation-delay: 0.3s;
-  }
-}

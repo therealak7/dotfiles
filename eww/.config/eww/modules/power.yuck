@@ -82,7 +82,7 @@
             :extra-class "lock"
             :text "lock"
             :symbol ""
-            :onclick "swaylock"
+            :onclick "swaylock &"
             )
           )
         (box :class "terminal flicker"
@@ -101,7 +101,7 @@
               )
             ; "$ "
             ; "${powermenu-button-selected}"
-            (box :class "blink" "_")))
+            (label :class "blink" :text "_")))
         )
       ) 
     )
@@ -115,8 +115,8 @@
     ; The added delay is *not* a perfect solution (it sometimes causes a hovered
     ; item to be active after mouse leaving) but it's the price we have to pay
     ; for managing hover state with eww variables.
-    :onhover "(sleep 0.02 && eww update powermenu-button-hovered=true powermenu-button-selected=\"${extra-class}\") &"
-    ; :onhoverlost "eww update powermenu-button-hovered=false powermenu-button-selected= &"
+    :onhover "(sleep 0.02 && eww update powermenu-button-selected=\"${extra-class}\") &"
+    :onhoverlost "sleep 10 && eww update powermenu-button-selected= &"
     :onclick "${onclick}"
     (button
       :vexpand false
